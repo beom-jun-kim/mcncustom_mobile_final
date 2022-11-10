@@ -1,0 +1,83 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea" module="myshop_boardTitle" style="padding: 10px; line-height: 30px;">
+    <div class="product__review--cate">
+        <a href="/index.html">홈</a>
+        <div class="product__review--move">&nbsp;>&nbsp;</div>
+        <h2>마이쇼핑</h2>
+        <div class="product__review--move">&nbsp;>&nbsp;</div>
+        <h2>게시물관리</h2>
+    </div>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/btn_back.gif" width="33" alt="뒤로가기"></a>
+    </span>
+</div>
+
+<div module="myshop_BoardPackage">
+    <!--@css(/css/module/myshop/boardPackage.css)-->
+    <div module="myshop_boardTitle" class="ec-base-tab">
+        <!--
+            $relation_post = yes
+        -->
+        <ul>
+            <li class="selected"><a href="/myshop/board_list.html"><span>게시글<span class="number">({$my_board_count})</span></span></a></li>
+            <li><a href="/myshop/board_comment.html"><span>댓글<span class="number">({$my_comment_count})</span></span></a></li>
+        </ul>
+    </div>
+
+    <div module="myshop_boardList">
+        <ul class="list">
+            <!--
+                $count = 5
+                $relation_post = yes
+            -->
+            <li>
+                <p class="summary">
+                    <a href="{$board_read_url}">
+                        <span class="subject">{$icon_re} {$icon_mobile} <strong>[{$board_category}]</strong> {$subject} {$comment_count} {$icon_file} <i class="xi-lock"></i></span>
+                        <div class="summary-flex">
+                            <span class="id" title="작성자">{$writer}</span>
+                            <span class="date" title="작성일">{$write_date}</span>
+                        </div>
+                    </a>
+                </p>
+            </li>
+            <li>
+                <p class="summary">
+                    <a href="{$board_read_url}">
+                        <span class="subject">{$icon_re} {$icon_mobile} <strong>[{$board_category}]</strong> {$subject} {$comment_count} {$icon_file} <i class="xi-lock"></i></span>
+
+                        <div class="summary-flex">
+                            <span class="id" title="작성자">{$writer}</span>
+                            <span class="date" title="작성일">{$write_date}</span>
+                        </div>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div module="myshop_boardlistPaging" class="ec-base-paginate typeList">
+    <!--
+        $relation_post = yes
+    -->
+    <a href="{$param_prev}" class="btnPrev"></a>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <a href="{$param_next}" class="btnNext"></a>
+</div>
+
+<div module="myshop_boardlistSearch">
+    <!--@css(/css/module/myshop/boardlistSearch.css)-->
+    <fieldset class="boardSearch">
+        <legend>게시물 검색</legend>
+        <div class="category">{$form.search_key}</div>
+        <div class="ec-base-field gBlank7" style="margin-top: 7px;">{$form.search} <button class="btnStrong" onclick="{$action_search}" style="background: #1e2223; border: none; padding: 0; width: 32px; height: 29px; font-size: 12px;">검색</button></div>
+    </fieldset>
+</div>
+
+<!-- <style>
+    .ec-base-paginate.typeList ol li:last-child a {display: none;}
+</style> -->

@@ -1,0 +1,90 @@
+<footer module="layout_footerPackage">
+    <div class="btnTop" id="btnTop">    
+        <a href="#"><i class="fas fa-chevron-up"></i> TOP</a>
+    </div>
+    <!--@css(/css/module/layout/footerPackage.css)-->
+    <div class="footerMenu">
+        <p module="layout_info">            
+            <span class="left">
+                <a href="tel:{$phone}" class="btnUtil typeTel"><span class="customer-center">customer center</span><strong>{$phone}</strong><span class="footer__inner--line">(내선 3번)</span></a>
+            </span>
+            <span class="footer__html--time">평일 오전 9시 ~ 오후6시, 점심오후 1시 ~ 오후2시, (토 / 일 공휴일 휴무)</p>
+        </p>
+        <ul class="policy">
+            <li><a href="/shopinfo/company.html">회사소개</a></li>
+            <li><a href="/member/mall_agreement.html">이용약관</a></li>
+            <li><a href="/member/privacy.html"><strong style="color: #d4d4d4;">개인정보처리방침</strong></a></li>
+            <li><a href="/shopinfo/guide.html">이용안내</a></li>
+            <li><a href="#none" onclick="javascript:isPCver();">PC버전</a></li>
+        </ul>
+    </div>
+    <address module="Layout_footer">
+        <div class="footerInfo">
+
+          <span>상호 : {$company_name}</span>
+          <span>주소 : {$mall_addr1} {$mall_addr2}</span><br>
+          <span>사업자등록번호 : {$company_regno}</span>
+          <span>개인정보관리책임 : <a href="mailto:{$cpo_email}">{$cpo_name}</a></span>
+          <span>통신판매업신고 : {$network_regno}</span><br>
+          <span>대표자 : <a href="mailto:{$email}">{$president_name}</a></span><br>
+          <!-- <span>전화 : {$phone}</span><br> -->
+
+        </div>
+    </address>
+    <p module="Layout_footer" class="copyright">
+      <b>Copyright {$company_name}. All Rights Reserved. hosted on Cafe24</b>
+      <a target="_blank" href="https://web-js.co.kr/">Design by JS DESIGN LAB</a>
+    </p>
+</footer>
+<div id="progressPaybar" style="display:none;">
+    <div id="progressPaybarBackground" class="layerProgress"></div>
+    <div id="progressPaybarView">
+        <p class="graph">현재 결제가 진행중입니다.</p>
+        <p class="txt">
+            본 결제 창은 결제완료 후 자동으로 닫히며, <br>
+            결제 진행 중에 본 결제 창을 닫으시면<br>
+            주문이 되지 않으니 <br>
+            결제 완료 될 때 까지 닫지 마시기 바랍니다.
+        </p>
+    </div>
+</div>
+<div module="Layout_multishopShipping" class="ec-base-layer typeModal">
+    <!--@css(/css/module/layout/multishopShipping.css)-->
+    <!--@js(/js/module/layout/multishopShipping.js)-->
+    <h1>WORLD SHIPPING</h1>
+    <div class="wrap worldshipLayer">
+        <p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+        <div class="select">
+            <select module="Layout_multishopShippingCountrylist">
+                <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+            </select>
+        </div>
+        <div class="select">
+            <select module="Layout_multishopShippingLanguagelist">
+                <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+            </select>
+        </div>
+    </div>
+    <div class="ec-base-button gFull">
+        <a href="#none" class="btnSubmit">GO</a>
+    </div>
+    <a href="#none" class="btnClose">닫기</a>
+</div>
+<div module="mobilequick_display">
+    {$quick_link}
+    {$quick_button}
+</div>
+<div class="kakaotalk">    
+    <a href="http://pf.kakao.com/_xiRxcNl/89941272">
+        <div class="top-arrow"><i class="xi-kakaotalk xi-2x"></i></div> 
+        <div class="top-text">상담하기</div>
+    </a>
+</div>
+<div class="btnTop-circle" id="btnTop-circle">    
+    <a href="#">
+        <div class="top-arrow"><i class="fas fa-chevron-up"></i></div> 
+        <div class="top-text">TOP</div>
+    </a>
+</div>

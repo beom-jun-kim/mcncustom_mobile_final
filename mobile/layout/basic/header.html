@@ -1,0 +1,24 @@
+<header id="header">
+  <!--@import(/layout/basic/navigation.html)-->
+    <div class="header">
+        <section id="topArea">
+            <div class="searchWrap">
+                <p class="category"><a href="#none" class="fold">카테고리</a></p>
+                <h1 module="Layout_LogoTop"><a href="/">{$mobile_title}</a></h1>
+                <p class="search"><button type="button">검색</button></p>
+            </div>
+        </section>
+        <!--@import(/layout/basic/search.html)-->
+    </div>
+    <nav class="gnb">
+      <ul module="layout_category" class="grid3">
+          <li id="cate{$cate_no}">
+            <a href="/product/list_thumb.html{$param}">{$name|cut 25}</a>
+          </li>
+          <li id="cate{$cate_no}">
+            <a href="/product/list_thumb.html{$param}">{$name|cut 25}</a>
+          </li>
+      </ul><!-- ul -->
+      <p></p>
+    </nav><!-- gnb -->
+</header>

@@ -1,0 +1,408 @@
+/**
+ * 모바일쇼핑몰 슬라이딩메뉴
+ */
+
+ body { position:relative; height:100%; }
+ #wrap { min-height:100%; }
+ 
+ /* 확장 */
+ html.expand body { position:fixed; top:0; left:0; width:100%; }
+ html.expand #container { -webkit-transform: translate(83%, 0); -moz-transform: translate(83%, 0); -ms-transform: translate(83%, 0); -o-transform: translate(83%, 0); transform: translate(83%, 0);}
+ html.expand #btnFoldLayout { z-index:405; }
+ 
+ /* aside */
+ #aside { z-index:9999; visibility:hidden; position:absolute; left:0px; top:0px; bottom:0; /* overflow:auto; overflow-x:hidden; */ /* min-width:225px; */ width:83%; font-size:11px; background: #fff;}
+ #aside .member {/* font-size:13px; */ /* line-height:41px; */ font-weight:normal;}
+ #aside .btnLogin,
+ #aside .btnJoin {position: absolute; width: 50%; height: 60px; line-height: 60px; text-align: center; font-size: 15px; font-weight: 700;}
+ #aside .btnLogin {background: #ffc000;}
+ #aside .btnJoin {background: #000; color: #fff;}
+ #aside .btnJoin {right: 0;}
+ /* #aside .member strong { color:#508bed; text-decoration:underline; } */
+ #aside .btnClose {/* display:block; */ padding:13px; position:absolute; bottom:120px; right: -40px; background: #fff; border: thin solid #eee;}
+ #aside .membership { padding:0 14px 11px; }
+ #aside .membership li { display:inline-block; margin:0 15px 0 0; padding:10px 0 0; }
+ #aside .membership li a { color:#508bed; }
+ #aside .membership li.like a { color:#000; }
+ #aside .membership li.like a span { color:#508bed; }
+ #aside .xans-myshop-main { background-color:#ffc000; border-top:thin solid #fff;}
+ #aside .xans-myshop-main a {float:left; width:25%; font-size: 12px; font-weight: 700; padding:1.6rem 0; color:#000; text-align:center; border-right: thin solid #fff; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-sizing:border-box; -o-sizing:border-box; box-sizing:border-box;}
+ /* #aside .xans-myshop-main a i {font-size: 15px;} */
+ #aside .xans-myshop-main a:last-child { border-right: none; }
+ #aside .xans-myshop-main:after { content:""; display:block; clear:both; }
+ #aside .xans-myshop-main a.wishList {/*  url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_wish_list.png") no-repeat 50% 15px; background-size:20px 18px;  */}
+ #aside .xans-myshop-main a.recentList {/*  url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_recent_list.png") no-repeat 50% 15px; background-size:20px 18px;  */}
+ #aside .xans-myshop-main a.orderList {/*  url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_order_list.png") no-repeat 50% 13px; background-size:16px 21px;  */}
+
+ 
+ /* 타이틀 */
+ #slideCateList h2 { position:relative; padding:0 34px 0 14px; border-bottom:1px solid #e3e3e3; line-height:28px; color:#508bed; font-weight:bold; font-size:11px; cursor:pointer; background:#fff; }
+ #slideCateList h2.selected  .icoCategory { background-image:url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_snb_1depth_on.gif"); }
+ #slideCateList h2 .icoCategory { overflow:hidden; position:absolute; right:3px; top:0; width:30px; height:29px; padding:0; border:0; text-indent:100%; white-space:nowrap; cursor:pointer; background:url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/bg_snb_1depth.gif") no-repeat 7px 50%; background-size:13px 8px; }
+ 
+ /* 카테고리 리스트 */
+ #aside .categoryList { font-size:13px; font-weight:bold; padding: 1rem;}
+ #aside .categoryList ul { display:none;}
+ #aside .categoryList li { position:relative;}
+ #aside .categoryList li.selected > ul { display:block;}
+
+ /* +- 작은버전 */
+ /* #aside .categoryList>li>a.cate {background: url(/web/img/moble_icon-plus.png) no-repeat 50%; width: 20px; height: 20px;}
+ #aside .categoryList>li.selected>a.cate {background: url(/web/img/moble_icon-minus.png) no-repeat 50%; width: 20px; height: 20px;} */
+
+ /* +- 얇은버전 */
+ /* #aside .categoryList>li>a.cate {background: url(/web/img/moble_icon-plus.png) no-repeat center/cover; width: 20px; height: 20px;}
+ #aside .categoryList>li.selected>a.cate {background: url(/web/img/moble_icon-minus.png) no-repeat center/cover; width: 20px; height: 20px;} */
+
+ /* +-굵은버전 */
+ #aside .categoryList>li>a.cate {background: url(/web/img/m__plus--icon.png) no-repeat center/cover; width: 20px; height: 20px;}
+ #aside .categoryList>li.selected>a.cate {background: url(/web/img/m__minus--icon.png) no-repeat center/cover; width: 20px; height: 20px;}
+ 
+ #aside .categoryList li.noChild > a.cate { /* border-top:1px solid #ebebeb; */ background-image:none !important;}
+ #aside .categoryList li.noChild:first-child > a.cate { border-top:0;}
+ #aside .categoryList li.selected.noChild { background-color:#f1f1f1;}
+ #aside .categoryList > li.selected .slideSubMenu li { background-color:#ffffff;}
+ #aside .categoryList > li { border-bottom:1px solid #cccccc; border-top:1px solid #fff;}
+ #aside .categoryList > li:first-child { border-top:0;}
+ #aside .categoryList > li > ul > li.selected > a.cate { border-bottom:1px solid #ebebeb;}
+ #aside .categoryList > li > ul > li > ul > li > a.cate { padding-left:49px;}
+ #aside .categoryList > li > ul > li > ul > li.selected > a.cate { border-bottom:1px solid #ebebeb;}
+ #aside .categoryList > li > ul > li > ul > li > ul > li a.cate { padding-left:56px;}
+ #aside .categoryList li.noChild > a.view { display:none; }
+ /* #aside .categoryList li.noChild > a.cate { display:none; } */
+ #aside .categoryList > li#cate45 > a.cate,
+ #aside .categoryList > li.background__style--none > a.cate,
+ #aside .categoryList > li > ul > li.index__gnb--company > a.cate {background: none; font-size: 15px; color: #4e4e4e; font-weight: 200;}
+ #aside .categoryList > li > ul > li.index__gnb--company {display: inline-block; width: 100%; padding-top: .8rem; /* text-align: center; */ }
+
+ .company__introduce--cate {padding-top: 20px;}
+ .company__more--click {position: absolute; right: 12px;}
+ 
+ .hamSlide__sub--flex,
+ .sidebar__gnb--byeonsu,
+ .community-cate {position: relative; padding: .8rem;}
+ 
+ .hamSlide__sub--flex a.view,
+ .sidebar__gnb--byeonsu a.view,
+ .community-cate a.view {font-size: 15px;}
+ 
+ .hamSlide__sub--flex a.cate i,
+ .sidebar__gnb--byeonsu a.cate i,
+ .community-cate a.cate i {font-size: 20px; font-weight: 800;}
+ 
+ #cate45 i {display: none;}
+ .slideSubMenu {padding: 0 0 1rem 0;}
+ .slideSubMenu > li {font-size: 15px; color: #4e4e4e; font-weight: 200; display: inline-block; width: 50%; padding-top: .8rem; text-align: center;}
+ .slideSubMenu li a.view {position: absolute; right: 45px; opacity: 0;}
+ .slideSubMenu li ul li.noChild {display: none;}
+
+ .xans-layout-statelogon.member {position: relative; background: #000; color: #ffc000; padding: 1.2rem 1rem; font-size: 1.1rem;}
+ .xans-layout-statelogon.member a i {color: #fff; font-size: 1.8rem;}
+ .xans-layout-statelogon.member a.join-icon {position: absolute; right: 13px;}
+ .xans-layout-statelogon.member a.login-icon {position: absolute; right: 50px;}
+
+ .xans-layout-statelogoff.member {margin-bottom: 70px;}
+ /* background-image: url(//img.echosting.cafe24.com/skin/mobile/myshop/ico_wishlist.png); */
+ 
+ /* 즐겨찾기 리스트 */
+ #aside .bookmarkCategory { font-size:13px; }
+ #aside .bookmarkCategory li { position:relative; border-bottom:1px solid #cccccc; border-top:1px solid #fff; }
+ #aside .bookmarkCategory li:first-child { border-top:0; }
+ #aside .bookmarkCategory li.selected { background-color:#508bed; }
+ #aside .bookmarkCategory li a { display:block; margin-right:35px; padding:11px 10px 11px 17px; word-wrap:break-word; }
+ #aside .bookmarkEmpty { padding:8px 0 6px 12px; border-bottom:1px solid #cccccc; color:#798490; font-size:11px; line-height:16px; background:#f1f1f1; }
+ #aside .bookmarkEmpty img { width:11px; height:11px; vertical-align:-1px; }
+ 
+ /* 즐겨찾기 아이콘 */
+ /* #aside .xans-layout-category li .icoBookmark,
+ #aside .bookmarkCategory li .icoBookmark { overflow:hidden; position:absolute; right:1px; top:0; width:30px; height:41px; padding:0; border:0; text-indent:100%; white-space:nowrap; background:url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/ico_bookmark.png") no-repeat 5px 14px; background-size:13px 13px; cursor:pointer; }
+ #aside .xans-layout-category li .icoBookmark.selected,
+ #aside .bookmarkCategory li .icoBookmark.selected { background-image:url("//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/ico_bookmark_on.png"); } */
+ .categoryList .icoBookmark {display: none;}
+ 
+ /* 배송국가 */
+ #aside .multishop .xans-layout-multishoplistmultioptioncountry li a { padding:9px 10px 11px 17px; font-size:13px; }
+ 
+ /* 멀티쇼핑몰 */
+ #aside .xans-multishop-listitem li { border-bottom:1px solid #cccccc; border-top:1px solid #fff; background-color:#f1f1f1; }
+ #aside .xans-multishop-listitem li:first-child { border-top:0; }
+ #aside .xans-multishop-listitem li a { display:block; padding:6px 10px 6px 14px; word-wrap:break-word; }
+ #aside .xans-multishop-listitem li a .name { margin:0 0 0 5px; font-size:13px; vertical-align:middle; }
+ 
+ /* 로그인,로그아웃 */
+ #aside .loginState { padding:8px 0 8px 14px; min-height:50px; }
+ #aside .loginState p { display:inline-block; width:auto; padding:5px 7px; border:1px solid #d5d5d5; border-radius:3px; }
+ #aside .loginState p a { color:#1b1b1b; }
+ 
+ /* conatiner */
+ #container {
+     z-index:100; position:relative; overflow:hidden; margin-top:-1px; margin-left:-1px; background-color:#fff;
+     -webkit-transition:300ms; -moz-transition:300ms; -ms-transition:300ms; -o-transition:300ms; transition:300ms;
+     -webkit-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden;
+ }
+ 
+ /* btnFoldLayout */
+ #btnFoldLayout {
+     display:none; position:absolute; left:83%; top:0; right:0; bottom:0; width:100%; height:100%; opacity:0;
+     -webkit-tap-highlight-color:rgba(0, 0, 0, 0); -webkit-focus-ring-color:rgba(0, 0, 0, 0);
+ }
+ 
+ /* ========== 포트폴리오 ========== */
+ /* 자전거 */
+ #aside .categoryList #cate131 a.cate,
+ #aside .categoryList #cate132 a.cate,
+ #aside .categoryList #cate133 a.cate,
+ #aside .categoryList #cate134 a.cate,
+ #aside .categoryList #cate135 a.cate,
+ #aside .categoryList #cate136 a.cate,
+ #aside .categoryList #cate137 a.cate,
+ #aside .categoryList #cate138 a.cate,
+ #aside .categoryList #cate139 a.cate,
+ #aside .categoryList #cate140 a.cate,
+ #aside .categoryList #cate141 a.cate,
+ #aside .categoryList #cate142 a.cate,
+ #aside .categoryList #cate143 a.cate,
+ #aside .categoryList #cate144 a.cate,
+ 
+ /* 마스크 */
+ #aside .categoryList #cate145 a.cate,
+ #aside .categoryList #cate146 a.cate,
+ #aside .categoryList #cate147 a.cate,
+ #aside .categoryList #cate148 a.cate,
+ #aside .categoryList #cate149 a.cate,
+ #aside .categoryList #cate150 a.cate,
+ #aside .categoryList #cate151 a.cate,
+ #aside .categoryList #cate152 a.cate,
+ #aside .categoryList #cate153 a.cate,
+ #aside .categoryList #cate154 a.cate,
+ #aside .categoryList #cate155 a.cate,
+ #aside .categoryList #cate156 a.cate,
+ #aside .categoryList #cate157 a.cate,
+ #aside .categoryList #cate158 a.cate,
+ 
+ /* 수상스포츠 */
+ #aside .categoryList #cate159 a.cate,
+ #aside .categoryList #cate160 a.cate,
+ #aside .categoryList #cate161 a.cate,
+ #aside .categoryList #cate162 a.cate,
+ #aside .categoryList #cate163 a.cate,
+ #aside .categoryList #cate164 a.cate,
+ #aside .categoryList #cate165 a.cate,
+ #aside .categoryList #cate166 a.cate,
+ #aside .categoryList #cate167 a.cate,
+ #aside .categoryList #cate168 a.cate,
+ #aside .categoryList #cate169 a.cate,
+ #aside .categoryList #cate170 a.cate,
+ #aside .categoryList #cate171 a.cate,
+ #aside .categoryList #cate172 a.cate,
+ 
+ /* 낚시*/
+ #aside .categoryList #cate173 a.cate,
+ #aside .categoryList #cate174 a.cate,
+ #aside .categoryList #cate175 a.cate,
+ #aside .categoryList #cate176 a.cate,
+ #aside .categoryList #cate177 a.cate,
+ #aside .categoryList #cate178 a.cate,
+ #aside .categoryList #cate179 a.cate,
+ #aside .categoryList #cate180 a.cate,
+ #aside .categoryList #cate181 a.cate,
+ #aside .categoryList #cate182 a.cate,
+ #aside .categoryList #cate183 a.cate,
+ #aside .categoryList #cate184 a.cate,
+ #aside .categoryList #cate185 a.cate,
+ #aside .categoryList #cate186 a.cate {display: none;}
+ 
+ /* ========== 제작가능상품 ========== */
+ /* 자전거 */
+ #aside .categoryList #cate187 a.cate,
+ #aside .categoryList #cate188 a.cate,
+ #aside .categoryList #cate189 a.cate,
+ #aside .categoryList #cate190 a.cate,
+ #aside .categoryList #cate191 a.cate,
+ #aside .categoryList #cate192 a.cate,
+ #aside .categoryList #cate193 a.cate,
+ #aside .categoryList #cate194 a.cate,
+ #aside .categoryList #cate195 a.cate,
+ #aside .categoryList #cate196 a.cate,
+ #aside .categoryList #cate197 a.cate,
+ #aside .categoryList #cate198 a.cate,
+ #aside .categoryList #cate199 a.cate,
+ #aside .categoryList #cate200 a.cate,
+ 
+ /* 수상스포츠 */
+ #aside .categoryList #cate201 a.cate,
+ #aside .categoryList #cate202 a.cate,
+ #aside .categoryList #cate203 a.cate,
+ #aside .categoryList #cate204 a.cate,
+ #aside .categoryList #cate205 a.cate,
+ #aside .categoryList #cate206 a.cate,
+ #aside .categoryList #cate207 a.cate,
+ #aside .categoryList #cate208 a.cate,
+ #aside .categoryList #cate209 a.cate,
+ #aside .categoryList #cate210 a.cate,
+ #aside .categoryList #cate211 a.cate,
+ #aside .categoryList #cate212 a.cate,
+ #aside .categoryList #cate213 a.cate,
+ #aside .categoryList #cate214 a.cate,
+ 
+ /* 낚시 */
+ #aside .categoryList #cate215 a.cate,
+ #aside .categoryList #cate216 a.cate,
+ #aside .categoryList #cate217 a.cate,
+ #aside .categoryList #cate218 a.cate,
+ #aside .categoryList #cate219 a.cate,
+ #aside .categoryList #cate220 a.cate,
+ #aside .categoryList #cate221 a.cate,
+ #aside .categoryList #cate222 a.cate,
+ #aside .categoryList #cate223 a.cate,
+ #aside .categoryList #cate224 a.cate,
+ #aside .categoryList #cate225 a.cate,
+ #aside .categoryList #cate226 a.cate,
+ #aside .categoryList #cate227 a.cate,
+ #aside .categoryList #cate228 a.cate,
+ 
+ /* 트라이애슬론 */
+ #aside .categoryList #cate229 a.cate,
+ #aside .categoryList #cate230 a.cate,
+ #aside .categoryList #cate231 a.cate,
+ #aside .categoryList #cate232 a.cate,
+ #aside .categoryList #cate233 a.cate,
+ #aside .categoryList #cate234 a.cate,
+ #aside .categoryList #cate235 a.cate,
+ #aside .categoryList #cate236 a.cate,
+ #aside .categoryList #cate237 a.cate,
+ #aside .categoryList #cate238 a.cate,
+ #aside .categoryList #cate239 a.cate,
+ #aside .categoryList #cate240 a.cate,
+ #aside .categoryList #cate241 a.cate,
+ #aside .categoryList #cate242 a.cate,
+ 
+ /* 축구 */
+ #aside .categoryList #cate243 a.cate,
+ #aside .categoryList #cate244 a.cate,
+ #aside .categoryList #cate245 a.cate,
+ #aside .categoryList #cate246 a.cate,
+ #aside .categoryList #cate247 a.cate,
+ #aside .categoryList #cate248 a.cate,
+ #aside .categoryList #cate249 a.cate,
+ #aside .categoryList #cate250 a.cate,
+ #aside .categoryList #cate251 a.cate,
+ #aside .categoryList #cate252 a.cate,
+ #aside .categoryList #cate253 a.cate,
+ #aside .categoryList #cate254 a.cate,
+ #aside .categoryList #cate255 a.cate,
+ #aside .categoryList #cate256 a.cate,
+ 
+ /* 볼링 */
+ #aside .categoryList #cate257 a.cate,
+ #aside .categoryList #cate258 a.cate,
+ #aside .categoryList #cate259 a.cate,
+ #aside .categoryList #cate260 a.cate,
+ #aside .categoryList #cate261 a.cate,
+ #aside .categoryList #cate262 a.cate,
+ #aside .categoryList #cate263 a.cate,
+ #aside .categoryList #cate264 a.cate,
+ #aside .categoryList #cate265 a.cate,
+ #aside .categoryList #cate266 a.cate,
+ #aside .categoryList #cate267 a.cate,
+ #aside .categoryList #cate268 a.cate,
+ #aside .categoryList #cate269 a.cate,
+ #aside .categoryList #cate270 a.cate,
+ 
+ /* 피트니스 */
+ #aside .categoryList #cate271 a.cate,
+ #aside .categoryList #cate272 a.cate,
+ #aside .categoryList #cate273 a.cate,
+ #aside .categoryList #cate274 a.cate,
+ #aside .categoryList #cate275 a.cate,
+ #aside .categoryList #cate276 a.cate,
+ #aside .categoryList #cate277 a.cate,
+ #aside .categoryList #cate278 a.cate,
+ #aside .categoryList #cate279 a.cate,
+ #aside .categoryList #cate280 a.cate,
+ #aside .categoryList #cate281 a.cate,
+ #aside .categoryList #cate282 a.cate,
+ #aside .categoryList #cate283 a.cate,
+ #aside .categoryList #cate284 a.cate,
+ 
+ /* 인라인 */
+ #aside .categoryList #cate285 a.cate,
+ #aside .categoryList #cate286 a.cate,
+ #aside .categoryList #cate287 a.cate,
+ #aside .categoryList #cate288 a.cate,
+ #aside .categoryList #cate289 a.cate,
+ #aside .categoryList #cate290 a.cate,
+ #aside .categoryList #cate291 a.cate,
+ #aside .categoryList #cate292 a.cate,
+ #aside .categoryList #cate293 a.cate,
+ #aside .categoryList #cate294 a.cate,
+ #aside .categoryList #cate295 a.cate,
+ #aside .categoryList #cate296 a.cate,
+ #aside .categoryList #cate297 a.cate,
+ #aside .categoryList #cate298 a.cate,
+ 
+ /* 마라톤 */
+ #aside .categoryList #cate299 a.cate,
+ #aside .categoryList #cate300 a.cate,
+ #aside .categoryList #cate301 a.cate,
+ #aside .categoryList #cate302 a.cate,
+ #aside .categoryList #cate303 a.cate,
+ #aside .categoryList #cate304 a.cate,
+ #aside .categoryList #cate305 a.cate,
+ #aside .categoryList #cate306 a.cate,
+ #aside .categoryList #cate307 a.cate,
+ #aside .categoryList #cate308 a.cate,
+ #aside .categoryList #cate309 a.cate,
+ #aside .categoryList #cate310 a.cate,
+ #aside .categoryList #cate311 a.cate,
+ #aside .categoryList #cate312 a.cate,
+ 
+ /* 스케이트 */
+ #aside .categoryList #cate313 a.cate,
+ #aside .categoryList #cate314 a.cate,
+ #aside .categoryList #cate315 a.cate,
+ #aside .categoryList #cate316 a.cate,
+ #aside .categoryList #cate317 a.cate,
+ #aside .categoryList #cate318 a.cate,
+ #aside .categoryList #cate319 a.cate,
+ #aside .categoryList #cate320 a.cate,
+ #aside .categoryList #cate321 a.cate,
+ #aside .categoryList #cate322 a.cate,
+ #aside .categoryList #cate323 a.cate,
+ #aside .categoryList #cate324 a.cate,
+ #aside .categoryList #cate325 a.cate,
+ #aside .categoryList #cate326 a.cate,
+ 
+ /* 조정 */
+ #aside .categoryList #cate327 a.cate,
+ #aside .categoryList #cate328 a.cate,
+ #aside .categoryList #cate329 a.cate,
+ #aside .categoryList #cate330 a.cate,
+ #aside .categoryList #cate331 a.cate,
+ #aside .categoryList #cate332 a.cate,
+ #aside .categoryList #cate333 a.cate,
+ #aside .categoryList #cate334 a.cate,
+ /* #aside .categoryList #cate335 a.cate, */
+ #aside .categoryList #cate336 a.cate,
+ #aside .categoryList #cate337 a.cate,
+ #aside .categoryList #cate338 a.cate,
+ #aside .categoryList #cate339 a.cate,
+ #aside .categoryList #cate340 a.cate,
+ #aside .categoryList #cate341 a.cate,
+ 
+ /* 역도 */
+ #aside .categoryList #cate342 a.cate,
+ #aside .categoryList #cate343 a.cate,
+ #aside .categoryList #cate344 a.cate,
+ #aside .categoryList #cate345 a.cate,
+ #aside .categoryList #cate346 a.cate,
+ #aside .categoryList #cate347 a.cate,
+ #aside .categoryList #cate348 a.cate,
+ #aside .categoryList #cate349 a.cate,
+ #aside .categoryList #cate350 a.cate,
+ #aside .categoryList #cate351 a.cate,
+ #aside .categoryList #cate352 a.cate,
+ #aside .categoryList #cate353 a.cate,
+ #aside .categoryList #cate354 a.cate,
+ #aside .categoryList #cate355 a.cate {display: none;}
+ 

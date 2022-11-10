@@ -1,0 +1,6 @@
+.xans-layout-mobilenavigation ul {border-bottom:1px solid #ccc;}
+.xans-layout-mobilenavigation ul:after{display:block; content:""; clear:both;}
+.xans-layout-mobilenavigation ul li { float:left; }
+.xans-layout-mobilenavigation ul li a { display:block; line-height:30px; font-size:11px; color:#333; text-align:center; }
+.xans-layout-mobilenavigation ul.grid4 li { width:25%; }
+.xans-layout-mobilenavigation ul.grid5 li { width:20%; }

@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
+<!-- aos -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+<!-- js -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<header id="header">
+    <div class="header">
+        <section id="topArea">
+            <div class="searchWrap">
+                <p class="category"><a href="#none" class="fold">카테고리</a></p>
+
+                <div class="header__main--logo" module="Layout_LogoTop">
+                    <a href="/index.html"><img src="/web/img/mobile-logo.jpg" alt="{$mall_name}"></a>
+                </div>
+                <div module="Layout_statelogoff" class="index__icon--flex">
+                    <p class="search"><button type="button"><i class="xi-search"></i></button></p></button>
+                    <a href="/member/login.html"><i class="xi-cart-o"></i></a>
+                    <a href="/member/login.html"><i class="xi-user-o"></i></a>
+                </div>
+                <div module="Layout_stateLogon" class="index__icon--flex">
+                    <p class="search"><button type="button"><i class="xi-search"></i></button></p></button>
+                    <a href="/order/basket.html"><i class="xi-cart-o"></i></a>
+                    <a href="/myshop/index.html"><i class="xi-user-o"></i></a>
+                </div>
+            </div>
+        </section>
+        <!--@import(/layout/basic/search.html)-->
+    </div>
+    <nav class="gnb">
+        <ul module="layout_category" class="grid4 index__header--cate">
+            <li>
+                <a href="/company-introduce.html">회사소개</a>
+            </li>
+            <li id="cate{$cate_no}">
+                <a href="/product/list_thumb.html{$param}">{$name|cut 25}</a>
+            </li>
+            <li id="cate{$cate_no}">
+                <a href="/product/list_thumb.html{$param}">{$name|cut 25}</a>
+            </li>
+            <li>
+                <a href="/board/free/list.html?board_no=6">견적문의</a>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,31 @@
+#prdInfo { display:none; }
+.xans-product-detaildesign { padding:14px 7px 7px; background:#f1f1f1; }
+.xans-product-detaildesign > .ec-base-table input#quantity,
+.xans-product-detaildesign > .ec-base-table img.QuantityUp,
+.xans-product-detaildesign > .ec-base-table img.QuantityDown { display:none; }
+.xans-product-detaildesign > .ec-base-table img#qrcode { width:70px; margin-right:-20px; margin-top:15px; }
+.xans-product-detaildesign > .ec-base-table .discount { display:block; font-size:11px; color:#1c1c1c; }
+.xans-product-detaildesign > .ec-base-table .period { display:block; }
+.xans-product-detaildesign > .ec-base-table #delivery_cost_prepaid { display:block; }
+.xans-product-detaildesign > .ec-base-table #btn_email_restock img { width:auto; height:26px; }
+
+
+
+.ec-base-fold .info { color:#6d6d6d; /* line-height:22px; */}
+/* .ec-base-fold .content { padding:0 0 60px;} */
+/* .product__detail--information {display: flex; align-items: center; text-align: center; border: thin solid rgba(221, 221, 221, 0.699); border-bottom: none;} */
+/* .product__detail--information:last-child {border-bottom: thin solid rgba(221, 221, 221, 0.699);} */
+.product__detail--information .title {font-size: 12px; padding: 1rem 1rem .5rem 1rem;}
+.product__detail--information .contents {border-top: thin solid rgba(221, 221, 221, 0.699); /* text-align: left; */ padding: 1rem; line-height:20px;}
+
+.infoArea-padding {padding: 2rem;}
+.product_detail--ele-wrap {display: flex;}
+.product_detail--info {border: thin solid rgba(221, 221, 221, 0.699); border-right: none; border-left: none; border-top: none;}
+.product_detail--title {width: 150px; line-height: 35px; text-transform: capitalize; border: thin solid rgba(221, 221, 221, 0.699); border-right: none; border-left: none; border-bottom: none; background: #f2f3ee; font-size: .9rem; color: rgb(54, 54, 54); font-family: 'NanumSquareRound';}
+.product_detail--explain {width: 446px; line-height: 35px; border: thin solid rgba(221, 221, 221, 0.699); border-right: none; border-left: none; border-bottom: none; color: rgb(129, 129, 129); /* font-family: 'NanumSquareRound'; */}
+.product_detail--title h3,
+.product_detail--explain p {text-align: center;}
+.product_detail--title h3 {font-size: 15px;}
+.product_detail--washing-desc {text-align: center;}
+.product_detail--font-weight {font-weight: 600;}
+.product_detail--washing-desc p {margin-top: 10px; line-height: 17px;}
